@@ -1,66 +1,26 @@
-// Ch 6 Programs.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Ch 6 Programs.cpp : Celsius Temperature Table
 
 #include <iostream>
+#include <iomanip>
+
 using namespace std;
 
-void getRegInfo(string&, int&);
-bool isLowest(int, int);
-void showLowest(string, int);
+double celsius(int);
 
 int main()
 {
-    string Region, lowRegion;
-    int Accidents, lowAccidents;
-    char again = 'Y';
+	cout << "\nTable of Fahrenheit tempratures 0 - 20 and their Celcius equivalents.\n\n";
+	cout << "Fahrenheit\tCelcius\n\n";
 
-    getRegInfo(Region, Accidents);
-    lowRegion = Region;
-    lowAccidents = Accidents;
-
-    while (again == 'Y' || again == 'y')
-    {
-        getRegInfo(Region, Accidents);
-        if (isLowest(Accidents, lowAccidents))
-        {
-            lowRegion = Region;
-            lowAccidents = Accidents;
-        }
-        cout << "Type Y to continue: ";
-        cin >> again;
-    }
-    showLowest(lowRegion, lowAccidents);
-    return 0;
+	for (int F = 0; F <= 20; F++)
+	{
+		cout << "\t" << setw(2) << F;
+		cout << "\t" << setw(3) << fixed << setprecision(2) << celsius(F) << endl;
+	}
+	cout << endl;
+	return 0;
 }
-
-void getRegInfo(string& Region, int& Accidents)
+double celsius(int F)
 {
-    cout << "Enter the name of the region: ";
-    cin >> Region;
-    do
-    {
-        cout << " Enter the number of accidents for the " << Region << " region: ";
-        cin >> Accidents;
-        if (Accidents < 0)
-            cout << "The number of accidents cannot be negative. Please try again.";
-    } while (Accidents < 0);
-}
-
-bool isLowest(int value1, int value2)
-{
-    return (value1 < value2);
-}
-
-void showLowest(string Region, int Accidents)
-{
-    if (Accidents == 1)
-    {
-        cout << "\nThe " << Region << " region has the lowest number of accidents.\n";
-        cout << "For a total of " << Accidents << " accident." << endl;
-    }
-    else
-    {
-    cout << "\nThe " << Region << " region has the lowest number of accidents.\n";
-    cout << "With a total of " << Accidents << " accidents." << endl;
-    }
+	return (5.0*(F - 32))/9;
 }
