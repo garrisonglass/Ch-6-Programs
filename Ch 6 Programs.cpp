@@ -6,6 +6,7 @@
 using namespace std;
 
 double celsius(int);
+double getCelcius(int);
 
 int main()
 {
@@ -18,7 +19,14 @@ int main()
 		cout << "\t" << setw(3) << fixed << setprecision(2) << celsius(F) << endl;
 	}
 	cout << endl;
+
 	return 0;
+}
+double getCelcius(int F, double celsius)
+{
+	cout << "Enter tempratue (F): ";
+	cin >> F;
+	cout << F << "F in celcius is" << celsius << endl;
 }
 double celsius(int F)
 {
