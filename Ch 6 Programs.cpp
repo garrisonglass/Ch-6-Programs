@@ -1,22 +1,88 @@
-// Ch 6 Programs.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Ch 6 Programs.cpp:Rectangle calculator
 
 #include <iostream>
+#include <limits>
 using namespace std;
+
+double getLength_Width(const string &question);
+double calcArea(double lenth, double width);
+double calcPerimeter(double lenth, double width);
+void displayProperties(double lenth, double width, double area, double perimeter);
+bool ShallWeContinue();
 
 int main()
 {
-    cout << "Hello World!\n";
+    cout << "Hither, and welcome, gentle sirs and madams, to the Rectangular Computatorium, where quadrangles meet their mathematical doom!\n\n";
+
+    do
+    {
+        double lenth = getLength_Width("Hark, what be the reach of yon rectangular shape, you inquire? ");
+        double width = getLength_Width("Prithee, divulge unto mine ears the lateral extent of yon four-sided geometrical marvel! ");
+        double area = calcArea(lenth, width);
+        double peramiter = calcPerimeter(lenth, width);
+        displayProperties(lenth, width, area, peramiter);
+    } 
+    while (ShallWeContinue());
+
+    cout << "Fare thee well, and may thy days be filled with unctuous jubilations and copious draughts of mead!\n";
     return 0;
 }
+double getLength_Width(const string& question)
+{
+    double value;
+    while (true)
+    {
+        cout << question;
+        cin >> value;
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+        if (cin.fail() || value <= 0)
+        {
+            cout << "Truly, mine cogitations doth fail. Pray, insert a number of rightful and legitimate provenance.\n";
+            cin.clear();
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+        }
+        else
+        {
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            return value;
+        }
+    }
+}
+double calcArea(double length, double width) 
+{
+    return length * width;
+}
+double calcPerimeter(double length, double width) {
+    return 2 * (length + width);
+}
+void displayProperties(double length, double width, double area, double perimeter) 
+{
+    cout << "\Verily, the response appertaining unto thine interrogation doth reside within\n";
+    cout << "Length: " << length << "\n";
+    cout << "Width : " << width << "\n";
+    cout << "Area  : " << area << "\n";
+    cout << "Perimeter: " << perimeter << "\n\n";
+}
+bool ShallWeContinue() 
+{
+    char choice;
+    while (true) 
+    {
+        cout << "Pray tell, dost thou harbour a most puissant desire to embark upon the herculean task of processing yet another quadrilateral bewitchment? (Yea/Nay) ";
+        cin >> choice;
+        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear buffer
+
+        choice = toupper(choice);
+        if (choice == 'Y') return true;
+        if (choice == 'N') return false;
+
+        cout << "Invalid choice. Please enter Y or N.\n";
+    }
+}
+
+
+
+
+
+
