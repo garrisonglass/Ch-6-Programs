@@ -4,9 +4,20 @@
 #include <iomanip>
 
 using namespace std;
-
 double celsius(int);
-double getCelcius(int);
+
+void getCelsius()
+{
+	int F;
+	cout << "Enter temperature (F): ";
+	cin >> F;
+	cout << F << "F in Celsius is " << fixed << setprecision(2) << celsius(F) << endl;
+}
+
+double celsius(int F)
+{
+	return (5.0 * (F - 32)) / 9;
+}
 
 int main()
 {
@@ -20,15 +31,8 @@ int main()
 	}
 	cout << endl;
 
+	getCelsius();
+
 	return 0;
 }
-double getCelcius(int F, double celsius)
-{
-	cout << "Enter tempratue (F): ";
-	cin >> F;
-	cout << F << "F in celcius is" << celsius << endl;
-}
-double celsius(int F)
-{
-	return (5.0*(F - 32))/9;
-}
+
