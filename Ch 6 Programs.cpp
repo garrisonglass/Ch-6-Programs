@@ -4,19 +4,63 @@
 #include <iostream>
 using namespace std;
 
+void getRegInfo(string&, int&);
+bool isLowest(int, int);
+void showLowest(string, int);
+
 int main()
 {
-    cout << "Hello World!\n";
+    string Region, lowRegion;
+    int Accidents, lowAccidents;
+    char again = 'Y';
+
+    getRegInfo(Region, Accidents);
+    lowRegion = Region;
+    lowAccidents = Accidents;
+
+    while (again == 'Y' || again == 'y')
+    {
+        getRegInfo(Region, Accidents);
+        if (isLowest(Accidents, lowAccidents))
+        {
+            lowRegion = Region;
+            lowAccidents = Accidents;
+        }
+        cout << "Type Y to continue: ";
+        cin >> again;
+    }
+    showLowest(lowRegion, lowAccidents);
     return 0;
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+void getRegInfo(string& Region, int& Accidents)
+{
+    cout << "Enter the name of the region: ";
+    cin >> Region;
+    do
+    {
+        cout << " Enter the number of accidents for the " << Region << " region: ";
+        cin >> Accidents;
+        if (Accidents < 0)
+            cout << "The number of accidents cannot be negative. Please try again.";
+    } while (Accidents < 0);
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+bool isLowest(int value1, int value2)
+{
+    return (value1 < value2);
+}
+
+void showLowest(string Region, int Accidents)
+{
+    if (Accidents == 1)
+    {
+        cout << "\nThe " << Region << " region has the lowest number of accidents.\n";
+        cout << "For a total of " << Accidents << " accident." << endl;
+    }
+    else
+    {
+    cout << "\nThe " << Region << " region has the lowest number of accidents.\n";
+    cout << "With a total of " << Accidents << " accidents." << endl;
+    }
+}
