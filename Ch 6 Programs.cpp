@@ -6,7 +6,7 @@ using namespace std;
 // Function to input scores
 void getScores(double scores[], int judges) 
 {
-    cout << "Enter " << judges << " scores (0-10, fractional allowed):\n";
+    cout << "Enter the scores of the " << judges << " judges.\n";
     for (int i = 0; i < judges; i++)
     {
         cin >> scores[i];
@@ -52,22 +52,14 @@ double calculateFinalScore(double scores[], int judges)
 
     for (int i = 0; i < judges; i++)
     {
-        if (scores[i] != highest && scores[i] != lowest) 
-        {
-            sum += scores[i];
-            count++;
-        }
+        sum += scores[i];
     }
 
-    // Edge case: if multiple scores equal highest/lowest, only drop one each
-    if (count < 3) 
-    {
-        // Add back one occurrence if too many were dropped
-        sum += highest;
-        count++;
-    }
+    sum -= highest;
+    sum -= lowest;
 
-    return sum / count;
+    return sum / (judges - 2); 
+
 }
 
 int main() 
