@@ -1,22 +1,85 @@
-// Ch 6 Programs.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Ch 6 Programs.cpp : Star Project
 
 #include <iostream>
 using namespace std;
 
-int main()
+// Function to input scores
+void getScores(double scores[], int judges) 
 {
-    cout << "Hello World!\n";
-    return 0;
+    cout << "Enter " << judges << " scores (0-10, fractional allowed):\n";
+    for (int i = 0; i < judges; i++)
+    {
+        cin >> scores[i];
+    }
 }
 
-// Run program: Ctrl + F5 or Debug > Start Without Debugging menu
-// Debug program: F5 or Debug > Start Debugging menu
+// Function to find highest score
+double findHighest(double scores[], int judges)
+{
+    double highest = scores[0];
+    for (int i = 1; i < judges; i++)
+    {
+        if (scores[i] > highest) 
+        {
+            highest = scores[i];
+        }
+    }
+    return highest;
+}
 
-// Tips for Getting Started: 
-//   1. Use the Solution Explorer window to add/manage files
-//   2. Use the Team Explorer window to connect to source control
-//   3. Use the Output window to see build output and other messages
-//   4. Use the Error List window to view errors
-//   5. Go to Project > Add New Item to create new code files, or Project > Add Existing Item to add existing code files to the project
-//   6. In the future, to open this project again, go to File > Open > Project and select the .sln file
+// Function to find lowest score
+double findLowest(double scores[], int judges)
+{
+    double lowest = scores[0];
+    for (int i = 1; i < judges; i++)
+    {
+        if (scores[i] < lowest) 
+        {
+            lowest = scores[i];
+        }
+    }
+    return lowest;
+}
+
+// Function to calculate final score
+double calculateFinalScore(double scores[], int judges)
+{
+    double highest = findHighest(scores, judges);
+    double lowest = findLowest(scores, judges);
+
+    double sum = 0.0;
+    int count = 0;
+
+    for (int i = 0; i < judges; i++)
+    {
+        if (scores[i] != highest && scores[i] != lowest) 
+        {
+            sum += scores[i];
+            count++;
+        }
+    }
+
+    // Edge case: if multiple scores equal highest/lowest, only drop one each
+    if (count < 3) 
+    {
+        // Add back one occurrence if too many were dropped
+        sum += highest;
+        count++;
+    }
+
+    return sum / count;
+}
+
+int main() 
+{
+    const int SIZE = 5;
+    double scores[SIZE];
+
+    getScores(scores, SIZE);
+
+    double finalScore = calculateFinalScore(scores, SIZE);
+
+    cout << "Final Score: " << finalScore << endl;
+
+    return 0;
+}
