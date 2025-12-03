@@ -53,7 +53,8 @@ double calcArea(double length, double width)
 {
     return length * width;
 }
-double calcPerimeter(double length, double width) {
+double calcPerimeter(double length, double width) 
+{
     return 2 * (length + width);
 }
 void displayProperties(double length, double width, double area, double perimeter) 
