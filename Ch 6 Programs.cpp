@@ -18,7 +18,7 @@ int main()
     lowRegion = Region;
     lowAccidents = Accidents;
 
-    while (again == 'Y' || again == 'y')
+    while (true)
     {
         getRegInfo(Region, Accidents);
         if (isLowest(Accidents, lowAccidents))
@@ -26,20 +26,22 @@ int main()
             lowRegion = Region;
             lowAccidents = Accidents;
         }
-        cout << "Type Y to continue: ";
+        cout << "Do you want to enter another? Y/N ";
         cin >> again;
+        if (again != 'Y' && again != 'y')
+            break;
     }
     showLowest(lowRegion, lowAccidents);
     return 0;
 }
 
-void getRegInfo(string& Region, int& Accidents)
+void getRegInfo(string& Region, int& Accidents)//
 {
     cout << "Enter the name of the region: ";
     cin >> Region;
     do
     {
-        cout << " Enter the number of accidents for the " << Region << " region: ";
+        cout << "Enter the number of accidents for the " << Region << " region: ";
         cin >> Accidents;
         if (Accidents < 0)
             cout << "The number of accidents cannot be negative. Please try again.";
