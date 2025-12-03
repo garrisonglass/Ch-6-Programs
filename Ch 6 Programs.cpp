@@ -35,7 +35,7 @@ int main()
     return 0;
 }
 
-void getRegInfo(string& Region, int& Accidents)//
+void getRegInfo(string& Region, int& Accidents)//Gets input from user on regions and number accidents
 {
     cout << "Enter the name of the region: ";
     cin >> Region;
@@ -48,14 +48,14 @@ void getRegInfo(string& Region, int& Accidents)//
     } while (Accidents < 0);
 }
 
-bool isLowest(int value1, int value2)
+bool isLowest(int value1, int value2)//Checks if each newly entered accident count is lower than the previous
 {
     return (value1 < value2);
 }
 
-void showLowest(string Region, int Accidents)
+void showLowest(string Region, int Accidents)//displays region with lowest count
 {
-    if (Accidents == 1)
+    if (Accidents == 1)//outlyer, singular 
     {
         cout << "\nThe " << Region << " region has the lowest number of accidents.\n";
         cout << "For a total of " << Accidents << " accident." << endl;
