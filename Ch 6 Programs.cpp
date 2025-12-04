@@ -5,10 +5,10 @@
 using namespace std;
 
 //Function prototypes (declared before main so they can be used later)
-double getLength_Width(const string &question);
-double calcArea(double lenth, double width);
-double calcPerimeter(double lenth, double width);
-void displayProperties(double lenth, double width, double area, double perimeter);
+double getLength_Width(const string &question);//Asks user for length and width
+double calcArea(double lenth, double width);//calculates area
+double calcPerimeter(double lenth, double width);//calculates perimeter
+void displayProperties(double lenth, double width, double area, double perimeter);//displays results
 bool ShallWeContinue();
 
 int main()
@@ -23,11 +23,12 @@ int main()
         double peramiter = calcPerimeter(lenth, width);
         displayProperties(lenth, width, area, peramiter);
     } 
-    while (ShallWeContinue());
-
+    while (ShallWeContinue());//repeats if user says y
+    //Exit message
     cout << "Fare thee well, and may thy days be filled with unctuous jubilations and copious draughts of mead!\n";
     return 0;
 }
+
 double getLength_Width(const string& question)
 {
     double value;
@@ -39,8 +40,8 @@ double getLength_Width(const string& question)
         if (cin.fail() || value <= 0)
         {
             cout << "Truly, mine cogitations doth fail. Pray, insert a number of rightful and legitimate provenance.\n";
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n');
+            cin.clear();//Clears error flags
+            cin.ignore(numeric_limits<streamsize>::max(), '\n');//discards invalid inputs
 
         }
         else
@@ -50,10 +51,12 @@ double getLength_Width(const string& question)
         }
     }
 }
+
 double calcArea(double length, double width) 
 {
     return length * width;
 }
+
 double calcPerimeter(double length, double width) 
 {
     return 2 * (length + width);
