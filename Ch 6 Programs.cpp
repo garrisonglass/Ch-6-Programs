@@ -4,6 +4,7 @@
 #include <iomanip>
 
 using namespace std;
+
 double celsius(int);// Function prototype, Declares the celsius function so it can be used before its definition
 
 void getCelsius()//Function: getCelsius, Prompts the user to enter a Fahrenheit temperature,then converts it to Celsius and displays the result.
