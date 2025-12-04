@@ -4,6 +4,7 @@
 #include <limits>
 using namespace std;
 
+//Function prototypes (declared before main so they can be used later)
 double getLength_Width(const string &question);
 double calcArea(double lenth, double width);
 double calcPerimeter(double lenth, double width);
