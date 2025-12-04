@@ -80,6 +80,7 @@ int main()
             cin.ignore(1000, '\n');//Discard up to 1000 characters or until it finds a newline ('\n')
             rooms = -1;//Repeat
         }
+
     } while (rooms <= 0);
 
     do
