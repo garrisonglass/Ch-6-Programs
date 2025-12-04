@@ -25,7 +25,7 @@ int main()//Displays a table of Fahrenheit temperatures from 0 to 20 and Celsius
 	cout << "\nTable of Fahrenheit tempratures 0 - 20 and their Celcius equivalents.\n\n";
 	cout << "Fahrenheit\tCelcius\n\n";
 
-	for (int F = 0; F <= 20; F++)//Loops to creat the table 
+	for (int F = 0; F <= 20; F++)//Loops to create the table 
 	{
 		cout << "\t" << setw(2) << F;
 		cout << "\t" << setw(3) << fixed << setprecision(2) << celsius(F) << endl;
