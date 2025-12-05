@@ -12,46 +12,39 @@ const double sqft_per_gallon = 110.0;//110 sq ft per gallon
 const double hours_per_sqft = 8.0 / 110.0;//8 hours per 110 sq ft
 const double labor_rate = 25.0;//$25 per hour
 
-//------------------------------------------------------------
+
 //Function: calculateGallons
 //Purpose:  Calculate how many gallons of paint are needed
 //Input:    sqft (double) - square feet of wall space
 //Output:   int - number of gallons required (rounded up)
-//------------------------------------------------------------
 int calculateGallons(double sqft)
 {
     return static_cast<int>((sqft + sqft_per_gallon - 1) / sqft_per_gallon);
 }
 
-//------------------------------------------------------------
 //Function: calculateLaborHours
 //Purpose:  Calculate labor hours required for given square footage
 //Input:    sqft (double) - square feet of wall space
 //Output:   double - number of labor hours required
-//------------------------------------------------------------
 double calculateLaborHours(double sqft)
 {
     return sqft * hours_per_sqft;
 }
 
-//------------------------------------------------------------
 //Function: calculatePaintCost
 //Purpose:  Calculate paint cost for a room
 //Input:    gallons (int) - gallons of paint required
 //          pricePerGallon (double) - cost of one gallon of paint
 //Output:   double - total paint cost for the room
-//------------------------------------------------------------
 double calculatePaintCost(int gallons, double pricePerGallon)
 {
     return gallons * pricePerGallon;
 }
 
-//------------------------------------------------------------
 //Function: calculateLaborCharges
 //Purpose:  Convert labor hours into dollar charges
 //Input:    hours (double) - number of labor hours
 //Output:   double - total labor charges in dollars
-//------------------------------------------------------------
 double calculateLaborCharges(double hours)
 {
     return hours * labor_rate;
