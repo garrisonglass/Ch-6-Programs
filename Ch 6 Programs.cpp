@@ -5,10 +5,10 @@
 using namespace std;
 
 //Function prototypes (declared before main so they can be used later)
-double getLength_Width(const string &question);//Asks user for length and width
-double calcArea(double lenth, double width);//calculates area
-double calcPerimeter(double lenth, double width);//calculates perimeter
-void displayProperties(double lenth, double width, double area, double perimeter);//displays results
+double getLength_Width(const string & question);//Asks user for length and width
+double calcArea(double length, double width);//calculates area
+double calcPerimeter(double length, double width);//calculates perimeter
+void displayProperties(double length, double width, double area, double perimeter);//displays results
 bool ShallWeContinue();
 
 int main()
@@ -17,11 +17,11 @@ int main()
 
     do
     {
-        double lenth = getLength_Width("Hark, what be the reach of yon rectangular shape, you inquire? ");
+        double length = getLength_Width("Hark, what be the reach of yon rectangular shape, you inquire? ");
         double width = getLength_Width("Prithee, divulge unto mine ears the lateral extent of yon four-sided geometrical marvel! ");
-        double area = calcArea(lenth, width);
-        double peramiter = calcPerimeter(lenth, width);
-        displayProperties(lenth, width, area, peramiter);
+        double area = calcArea(length, width);
+        double perimiter = calcPerimeter(length, width);
+        displayProperties(length, width, area, perimiter);
     } 
     while (ShallWeContinue());//repeats if user says y
     //Exit message
@@ -29,7 +29,7 @@ int main()
     return 0;
 }
 
-double getLength_Width(const string& question)
+double getLength_Width(const string & question)
 {
     double value;
     while (true)
@@ -37,7 +37,7 @@ double getLength_Width(const string& question)
         cout << question;
         cin >> value;
 
-        if (cin.fail() || value <= 0)
+        if (cin.fail() || value <= 0)//Input validation
         {
             cout << "Truly, mine cogitations doth fail. Pray, insert a number of rightful and legitimate provenance.\n";
             cin.clear();//Clears error flags
@@ -63,7 +63,7 @@ double calcPerimeter(double length, double width)
 }
 void displayProperties(double length, double width, double area, double perimeter) 
 {
-    cout << "\Verily, the response appertaining unto thine interrogation doth reside within\n";
+    cout << "\nVerily, the response appertaining unto thine interrogation doth reside within\n";
     cout << "Length: " << length << "\n";
     cout << "Width : " << width << "\n";
     cout << "Area  : " << area << "\n";
@@ -76,7 +76,7 @@ bool ShallWeContinue()
     {
         cout << "Pray tell, dost thou harbour a most puissant desire to embark upon the herculean task of processing yet another quadrilateral bewitchment? (Yea/Nay) ";
         cin >> choice;
-        cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Clear buffer
+        cin.ignore(numeric_limits<streamsize>::max(), '\n');//Clear buffer
 
         choice = toupper(choice);
         if (choice == 'Y') return true;
@@ -85,9 +85,3 @@ bool ShallWeContinue()
         cout << "Invalid choice. Please enter Y or N.\n";
     }
 }
-
-
-
-
-
-
