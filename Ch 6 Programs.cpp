@@ -1,11 +1,10 @@
-// Ch 6 Programs.cpp : This file contains the 'main' function. Program execution begins and ends there.
-//
+// Ch 6 Programs.cpp: Safe Driving
 
 #include <iostream>
 using namespace std;
-
-void getRegInfo(string&, int&);
-bool isLowest(int, int);
+//Function prototypes
+void getRegInfo(string&, int&);//gets regions name and accidents
+bool isLowest(int, int);//compares 2 accidents, returns true if the first is lower
 void showLowest(string, int);
 
 int main()
@@ -21,17 +20,17 @@ int main()
     while (true)
     {
         getRegInfo(Region, Accidents);
-        if (isLowest(Accidents, lowAccidents))
+        if (isLowest(Accidents, lowAccidents))// Check if new accident count is lower than the current lowest
         {
-            lowRegion = Region;
-            lowAccidents = Accidents;
+            lowRegion = Region;//updates lowest region
+            lowAccidents = Accidents;//and accident count
         }
         cout << "Do you want to enter another? Y/N ";
         cin >> again;
-        if (again != 'Y' && again != 'y')
+        if (again != 'Y' && again != 'y')//exits loop if anything ofther than y or Y is entered
             break;
     }
-    showLowest(lowRegion, lowAccidents);
+    showLowest(lowRegion, lowAccidents);// Display the region with the lowest accident count
     return 0;
 }
 
@@ -43,7 +42,7 @@ void getRegInfo(string& Region, int& Accidents)//Gets input from user on regions
     {
         cout << "Enter the number of accidents for the " << Region << " region: ";
         cin >> Accidents;
-        if (Accidents < 0)
+        if (Accidents < 0)//Input validation
             cout << "The number of accidents cannot be negative. Please try again.";
     } while (Accidents < 0);
 }
