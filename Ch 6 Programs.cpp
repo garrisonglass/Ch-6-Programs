@@ -1,11 +1,11 @@
-// Ch 6 Programs.cpp : Celsius Temperature Table
+//Ch 6 Programs.cpp : Celsius Temperature Table
 
 #include <iostream>
 #include <iomanip>
 
 using namespace std;
 
-double celsius(int);// Function prototype, Declares the celsius function so it can be used before its definition
+double celsius(int);//Function prototype, Declares the celsius function so it can be used before its definition
 
 void getCelsius()//Function: getCelsius, Prompts the user to enter a Fahrenheit temperature,then converts it to Celsius and displays the result.
 {
@@ -15,7 +15,7 @@ void getCelsius()//Function: getCelsius, Prompts the user to enter a Fahrenheit 
 	cout << F << "F in Celsius is " << fixed << setprecision(2) << celsius(F) << endl;
 }
 
-double celsius(int F)// Function: celsius, Converts a Fahrenheit temperature to Celsius. Input: F (int) - temperature in Fahrenheit, Output: double - equivalent temperature in Celsius.Formula: (F - 32) * 5/9
+double celsius(int F)//Function: celsius, Converts a Fahrenheit temperature to Celsius. Input: F (int) - temperature in Fahrenheit, Output: double - equivalent temperature in Celsius.Formula: (F - 32) * 5/9
 {
 	return (5.0 * (F - 32)) / 9;
 }
@@ -36,4 +36,3 @@ int main()//Displays a table of Fahrenheit temperatures from 0 to 20 and Celsius
 
 	return 0;
 }
-
