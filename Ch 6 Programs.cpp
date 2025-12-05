@@ -77,7 +77,7 @@ double calculateFinalScore(double scores[], int judges)
 
     for (int i = 0; i < judges; i++)
     {
-        sum += scores[i];
+        sum += scores[i];//addes each score to sum
     }
     //removes highest and lowest score
     sum -= highest;
